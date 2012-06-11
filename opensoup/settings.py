@@ -119,6 +119,7 @@ INSTALLED_APPS = (
 	'south',
 	'django.contrib.admin',
 	'django.contrib.admindocs',
+	'tumblelog',
 )
 
 # A sample logging configuration. The only tangible logging
