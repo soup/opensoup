@@ -3,9 +3,26 @@ body {
 	color: #2B2926;
 }
 
+.page-title {
+	width: 588px;
+	margin: 0 auto;
+	text-align: center;
+	font-family: 'Open Sans Condensed';
+	text-transform: uppercase;
+	font-weight: bold;
+	margin-top: 40px;
+}
+
+.page-name {
+	font-family: 'Open Sans';
+	text-transform: none;
+	font-weight: lighter;
+}
+
 #content {
 	width: 588px;
 	margin: 0 auto;
+	margin-top: 50px;
 }
 
 .post {
