@@ -23,11 +23,22 @@ Technical foo
 
 From a technical standpoint, this is a Django project that uses South for schema migrations.
 
-Dependencies
-------------
+Testing locally
+----------------
 
-See `requirements.txt` for the dependencies of this. You can also use
+Run the following commands to  get opensoup running locally for the first time:
 
+	# Install python dependencies
 	pip2 install -r requirements.txt
 
-to automatically install them all.
+	# Populate system tables
+	python2 manage.py runserver
+
+	# Run migrations
+	python2 manage.py migrate
+
+	# Collect staticfiles
+	python2 manage.py collectstatic
+
+	# Run the server
+	python2 manage.py runserver
