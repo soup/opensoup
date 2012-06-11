@@ -2,9 +2,13 @@
 {% block content %}
 	{% for post in posts %}
 		<div class="post" id="post{{ post.id }}">
-			<h2>{{ post.blog.owner }}</h2>
-			<img src="{{ MEDIA_URL }}{{ post.asset }}" />
-			<span class="repost-list">Reposted from herp via derp</span>
+			<div class="left">
+				<a href="/post/{% if post.url %}{{ post.url }}{% else %}id/{{ post.id }}{% endif %}/"><img class="blog-avatar" src="{{ MEDIA_URL }}{{ post.blog.avatar.url }}" alt="{{ post.blog.owner }}" /></a>
+			</div>
+			<div class="right">
+				<img class="post-image" src="{{ MEDIA_URL }}{{ post.asset.url }}" />
+				<span class="repost-list">Reposted from herp via derp</span>
+			</div>
 		</div>
 	{% endfor %}
 {% endblock %}

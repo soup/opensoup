@@ -8,7 +8,7 @@ def everyone(request):
 	"Shows everyone's posts"
 
 	posts = ImagePost.objects.all().order_by('-id')[:20]
-	return render_to_response('tumblelog/everyone.html', context_instance=RequestContext(request, {'posts': posts}))
+	return render_to_response('tumblelog/everyone.html', context_instance=RequestContext(request, {'posts': posts, 'title': 'Everyone'}))
 
 @login_required
 def friends(requests):

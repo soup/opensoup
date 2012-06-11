@@ -8,6 +8,7 @@ class Blog(models.Model):
 	owner = models.ForeignKey(User)
 	name = models.SlugField()
 	title = models.CharField(max_length = 250)
+	avatar = models.ForeignKey('Asset')
 
 	__unicode__ = lambda self: '{0} ({1})'.format(self.title, self.name)
 
@@ -37,7 +38,7 @@ class Asset(models.Model):
 # Post types
 class Post(models.Model):
 	blog = models.ForeignKey(Blog)
-	url = models.SlugField()
+	url = models.SlugField(blank = True)
 	
 	__unicode__ = lambda self: self.url
 
