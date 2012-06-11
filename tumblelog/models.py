@@ -14,13 +14,13 @@ class Blog(models.Model):
 # An asset in the file system (i.e. image, video, …)
 class Asset(models.Model):
 	# Recycle the old soup.io URL scheme
-	random_part = models.CharField(max_length = 4, editable = False)
+	random_part = models.CharField(max_length = 4, blank = True)
 	directory = models.IntegerField()
 	num = models.IntegerField()
 	extension = models.CharField(max_length = 4)
 
 	url = lambda self: '{0}/{1}_{2}.{3}'.format(self.directory, self.num, self.random_part, self.extension)
-	__unicode__ = url
+	diskfile = models.ImageField(upload_to = lambda self, filename: self.url())
 
 	def save(self):
 		if not self.random_part:
@@ -31,6 +31,8 @@ class Asset(models.Model):
 			self.random_part = '{0:0>4}'.format(hex(random.randrange(0, 0xffff))[2:])
 
 		super(Asset, self).save()
+
+	__unicode__ = url
 
 # Post types
 class Post(models.Model):

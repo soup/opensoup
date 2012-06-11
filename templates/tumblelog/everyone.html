@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block body %}
+	{% for post in posts %}
+		<h2>{{ post.blog.owner }}</h2>
+		<p><img src="{{ MEDIA_URL }}{{ post.asset }}" /></p>
+		Reposted from herp via derp
+	{% endfor %}
+{% endblock %}
