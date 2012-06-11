@@ -1,0 +1,22 @@
+body {
+	font-family: 'Open Sans', 'opensans', sans-serif;
+	color: #2B2926;
+}
+
+#content {
+	width: 460px;
+	margin: 0 auto;
+}
+
+.post {
+	width: inherit;
+}
+
+.post > img {
+	width: 100%;
+}
+
+.post > .repost-list {
+	font-weight: lighter;
+	font-size: 0.9em;
+}

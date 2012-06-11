@@ -1,8 +1,10 @@
 {% extends "base.html" %}
-{% block body %}
+{% block content %}
 	{% for post in posts %}
-		<h2>{{ post.blog.owner }}</h2>
-		<p><img src="{{ MEDIA_URL }}{{ post.asset }}" /></p>
-		Reposted from herp via derp
+		<div class="post" id="post{{ post.id }}">
+			<h2>{{ post.blog.owner }}</h2>
+			<img src="{{ MEDIA_URL }}{{ post.asset }}" />
+			<span class="repost-list">Reposted from herp via derp</span>
+		</div>
 	{% endfor %}
 {% endblock %}
