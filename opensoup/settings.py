@@ -1,6 +1,7 @@
 import os
 
-SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
+SITE_ROOT = os.path.realpath(os.path.join(os.path.dirname(__file__), os.path.pardir))
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
