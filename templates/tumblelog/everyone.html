@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% load i18n %}
+
 {% block content %}
 	{% for post in posts %}
 		<div class="post" id="post{{ post.id }}">
@@ -7,7 +9,15 @@
 			</div>
 			<div class="right">
 				<img class="post-image" src="{{ MEDIA_URL }}{{ post.asset.url }}" />
-				<span class="repost-list">Reposted from herp via derp</span>
+
+				{% if post.origin %}
+					<span class="repost-list">
+						{% trans 'Reposted from' %} <img class="repost-from-avatar" src="{{ MEDIA_URL }}{{ post.origin.blog.avatar.url }}" />{{ post.origin.blog.name }}
+						{% if post.reposted_via %}
+							{% trans 'via' %} <img class="repost-from-avatar" src="{{ MEDIA_URL }}{{ post.reposted_via.blog.avatar.url }}" />{{ post.reposted_via.blog.name }}
+						{% endif %}
+					</span>
+				{% endif %}
 			</div>
 		</div>
 	{% endfor %}

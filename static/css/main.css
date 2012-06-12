@@ -55,3 +55,9 @@ body {
 	font-weight: lighter;
 	font-size: 0.9em;
 }
+
+.post > .right > .repost-list > .repost-from-avatar {
+	height: 16px;
+	width: 16px;
+	margin-right: 3px;
+}
