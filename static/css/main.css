@@ -17,7 +17,7 @@ header {
 	height: 35px;
 
 	background: rgba(0, 0, 0, 0.85);
-	color: #eeeeee;
+	color: #eee;
 }
 
 header > nav ul {
@@ -70,11 +70,12 @@ aside {
 }
 
 .sub-title {
-	font-family: 'Gentium Book Basic';
 	font-size: 17px;
 	font-weight: lighter;
 	margin: 0;
-	margin-bottom: 60px;
+	margin-bottom: 40px;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #cecece;
 }
 
 .post {
@@ -91,7 +92,7 @@ aside {
 .post > .left > .blog-avatar {
 	width: 48px;
 	height: 48px;
-	border: 0 !important;
+	border: 1px solid #cecece;
 }
 
 .post > .right {
