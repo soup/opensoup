@@ -7,13 +7,12 @@
 		<title>{% if title %}{{ title }} - Soup{% else %}Soup - Publish, collect, share.{% endif %}</title>
 
 		<link rel="shortcut icon" href="{{ STATIC_URL }}img/favicon.png" />
-		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600' rel='stylesheet' type='text/css'>
-		<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,600|Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
 		<link href="{{ STATIC_URL }}css/reset.css" rel="stylesheet" type="text/css" />
 		<link href="{{ STATIC_URL }}css/main.css" rel="stylesheet" type="text/css" />
 
 		<script type="text/javascript">
-			var staticUrl = '{{ STATIC_URL }}';
+			var static_url = '{{ STATIC_URL }}';
 		</script>
 		<script type="text/javascript" src="{{ STATIC_URL }}js/jquery-1.7.1.min.js"></script>
 	</head>
@@ -30,11 +29,20 @@
 				</ul>
 			</nav>
 		</header>
-		<h1 class="page-title"><span class="page-name">Soup</span> – {{ title }}</h1>
-		<div id="content">
-			{% block content %}
-				Nothing to see here…
-			{% endblock %}
+
+		<div id="main-wrapper">
+			<aside>
+				<a href="/"><img id="page-logo" src="{{ STATIC_URL }}img/soup.png" alt="Soup logo" /></a>
+			</aside>
+
+			<div id="content" role="main">
+				<h1 class="page-title">{{ title }}</h1>
+				{% if subtitle %}<h2 class="sub-title">{{ subtitle }}</h2>{% endif %}
+
+				{% block content %}
+					Nothing to see here…
+				{% endblock %}
+			</div>
 		</div>
 	</body>
 </html>

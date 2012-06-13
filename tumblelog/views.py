@@ -1,3 +1,4 @@
+# coding: utf-8
 from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404, render_to_response
 from django.utils.translation import ugettext as _
@@ -10,7 +11,12 @@ def everyone(request):
 	"Shows everyone's posts"
 
 	posts = ImagePost.objects.all().order_by('-id')[:20]
-	return render_to_response('tumblelog/everyone.html', context_instance=RequestContext(request, {'posts': posts, 'title': _('Everyone')}))
+	context = {
+			'posts': posts,
+			'title': _('Everyone'),
+			'subtitle': _(u'See what everyone\'s posting – Go on, try scrolling all the way down :)')
+		}
+	return render_to_response('tumblelog/everyone.html', context_instance=RequestContext(request, context))
 
 @login_required
 def friends(request):
