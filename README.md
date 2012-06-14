@@ -32,7 +32,7 @@ Run the following commands to  get opensoup running locally for the first time:
 	pip2 install -r requirements.txt
 
 	# Populate system tables
-	python2 manage.py runserver
+	python2 manage.py syncdb
 
 	# Run migrations
 	python2 manage.py migrate

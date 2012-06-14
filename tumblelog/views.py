@@ -22,7 +22,8 @@ def everyone(request):
 def friends(request):
 	"Shows your friend's posts"
 
-	posts = ImagePost.objects.filter(blog__owner__in = request.user.get_profile().friends.values('id')).order_by('-id')[:20]
+	following = request.user.get_profile().following.values('id')
+	posts = ImagePost.objects.filter(blog__owner__in = following).order_by('-id')[:20]
 	context = {
 			'posts': posts,
 			'title': _('My friends'),

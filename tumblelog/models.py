@@ -5,9 +5,17 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 import random
 
+class Blog(models.Model):
+	owner = models.ForeignKey(User, verbose_name = _('Owner'))
+	name = models.SlugField()
+	title = models.CharField(max_length = 250)
+	avatar = models.ForeignKey('Asset')
+
+	__unicode__ = lambda self: '{0} ({1})'.format(self.title, self.name)
+
 class UserProfile(models.Model):
 	user = models.OneToOneField(User)
-	friends = models.ManyToManyField(User, related_name='friends', blank = True)
+	following = models.ManyToManyField(Blog, related_name='following', blank = True)
 
 	__unicode__ = lambda self: self.user.username
 
@@ -17,14 +25,6 @@ def create_user_profile(sender, instance, created, **kwargs):
         UserProfile.objects.create(user=instance)
 
 post_save.connect(create_user_profile, sender=User)
-
-class Blog(models.Model):
-	owner = models.ForeignKey(User, verbose_name = _('Owner'))
-	name = models.SlugField()
-	title = models.CharField(max_length = 250)
-	avatar = models.ForeignKey('Asset')
-
-	__unicode__ = lambda self: '{0} ({1})'.format(self.title, self.name)
 
 # An asset in the file system (i.e. image, video, …)
 class Asset(models.Model):
