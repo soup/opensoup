@@ -4,5 +4,6 @@ from tumblelog.views import *
 urlpatterns = patterns('',
 	url(r'^everyone/$', everyone),
 	url(r'^friends/$', friends),
+	url(r'^accounts/signup/$', signup),
 	url(r'^$', index),
 )

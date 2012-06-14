@@ -1,11 +1,13 @@
 # coding: utf-8
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404, render_to_response
 from django.utils.translation import ugettext as _
 from django.contrib.auth.decorators import login_required
 from tumblelog.models import Post, ImagePost
 from django.template.context import RequestContext
 from django.conf import settings
+from django import forms
+from django.contrib.auth.forms import UserCreationForm
 
 def everyone(request):
 	"Shows everyone's posts"
@@ -46,3 +48,21 @@ def index(request):
 
 	# Else, display standard index page
 	return HttpResponse('You are not logged in. <a href="/everyone/">Everyone</a>')
+
+def signup(request):
+	if request.user.is_authenticated():
+		return redirect('/friends/')
+
+	if request.method == 'POST':
+		form = UserCreationForm(request.POST)
+
+		if form.is_valid():
+			new_user = form.save()
+			return HttpResponseRedirect("/friends/")
+	else:
+		form = UserCreationForm()
+		return render_to_response("signup.html", context_instance = RequestContext(request, {
+			'form': form,
+			'title': 'Create an account',
+			'subtitle': 'Hooray! A new user!'
+		}))
