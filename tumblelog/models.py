@@ -4,6 +4,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 import random
+import os
 
 class Blog(models.Model):
 	owner = models.ForeignKey(User, verbose_name = _('Owner'))
@@ -49,6 +50,12 @@ class Asset(models.Model):
 			self.extension = self.diskfile.path.split('.')[-1]
 
 		super(Asset, self).save()
+
+	def delete(self):
+		if os.path.exists(self.diskfile.path):
+			os.remove(self.diskfile.path)
+
+		super(Asset, self).delete()
 
 	__unicode__ = url
 
