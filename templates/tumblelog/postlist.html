@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+	{% for post in posts %}
+		{% include "tumblelog/_post.html" %}
+	{% empty %}
+		<h3>Sorry, but I don't have any posts to show :(</h3>
+	{% endfor %}
+{% endblock %}

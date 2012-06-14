@@ -76,6 +76,7 @@ STATICFILES_DIRS = (
 )
 
 SITE_URL = 'soup.local'
+AUTH_PROFILE_MODULE = 'tumblelog.UserProfile'
 
 # List of finder classes that know how to find static files in
 # various locations.

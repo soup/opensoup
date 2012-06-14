@@ -16,11 +16,20 @@ def everyone(request):
 			'title': _('Everyone'),
 			'subtitle': _(u'See what everyone\'s posting – Go on, try scrolling all the way down :)')
 		}
-	return render_to_response('tumblelog/everyone.html', context_instance=RequestContext(request, context))
+	return render_to_response('tumblelog/postlist.html', context_instance=RequestContext(request, context))
 
 @login_required
 def friends(request):
-	return HttpResponse('Friends.')
+	"Shows your friend's posts"
+
+	posts = ImagePost.objects.filter(blog__owner__in = request.user.get_profile().friends.values('id')).order_by('-id')[:20]
+	context = {
+			'posts': posts,
+			'title': _('My friends'),
+			'subtitle': _(u'Stuff your friends posted')
+		}
+	return render_to_response('tumblelog/postlist.html', context_instance=RequestContext(request, context))
+
 
 def index(request):
 	# Check if this is a user soup

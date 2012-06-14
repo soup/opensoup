@@ -1,11 +1,25 @@
 # coding: utf-8
-
+from django.utils.translation import ugettext as _
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
 import random
 
+class UserProfile(models.Model):
+	user = models.OneToOneField(User)
+	friends = models.ManyToManyField(User, related_name='friends', blank = True)
+
+	__unicode__ = lambda self: self.user.username
+
+# Automatically create a new user profile when a new user is added
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        UserProfile.objects.create(user=instance)
+
+post_save.connect(create_user_profile, sender=User)
+
 class Blog(models.Model):
-	owner = models.ForeignKey(User)
+	owner = models.ForeignKey(User, verbose_name = _('Owner'))
 	name = models.SlugField()
 	title = models.CharField(max_length = 250)
 	avatar = models.ForeignKey('Asset')
