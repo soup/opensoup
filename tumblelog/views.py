@@ -13,7 +13,7 @@ from django.forms import ModelForm
 class AssetForm(ModelForm):
 	class Meta:
 		model = Asset
-		fields = ('directory', 'num', 'extension', 'diskfile')
+		fields = ('directory', 'num', 'diskfile')
 
 def everyone(request):
 	"Shows everyone's posts"

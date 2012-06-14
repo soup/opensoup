@@ -32,7 +32,7 @@ class Asset(models.Model):
 	random_part = models.CharField(max_length = 4, blank = True)
 	directory = models.IntegerField()
 	num = models.IntegerField()
-	extension = models.CharField(max_length = 4)
+	extension = models.CharField(max_length = 4, blank = True, editable = False)
 
 	url = lambda self: '{0}/{1}_{2}.{3}'.format(self.directory, self.num, self.random_part, self.extension)
 	diskfile = models.ImageField(upload_to = lambda self, filename: self.url())
@@ -44,6 +44,9 @@ class Asset(models.Model):
 			# should have at least 4 chars. If it doesn't, it'll add zeroes on
 			# the left side.
 			self.random_part = '{0:0>4}'.format(hex(random.randrange(0, 0xffff))[2:])
+
+		if not self.extension:
+			self.extension = self.diskfile.path.split('.')[-1]
 
 		super(Asset, self).save()
 
