@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404, render_to_response
 from django.utils.translation import ugettext as _
 from django.contrib.auth.decorators import login_required
-from tumblelog.models import Post, ImagePost
+from tumblelog.models import Post, ImagePost, Blog
 from django.template.context import RequestContext
 from django.conf import settings
 from django import forms
@@ -36,11 +36,25 @@ def friends(request):
 	return render_to_response('tumblelog/postlist.html', context_instance=RequestContext(request, context))
 
 
+def user_soup(request, blogname):
+	blog = get_object_or_404(Blog, name = blogname)
+	posts = ImagePost.objects.filter(blog = blog).order_by('-id')[:20]
+
+	context = {
+			'posts': posts,
+			'title': blog.title,
+			'site_url': settings.SITE_URL,
+			'favicon': settings.MEDIA_URL + blog.avatar.url(),
+			'subtitle': _(u'Description description description.')
+		}
+	return render_to_response('tumblelog/postlist.html', context_instance=RequestContext(request, context))
+
+
 def index(request):
 	# Check if this is a user soup
 	split_host = request.get_host().split('.')
 	if(len(split_host) > len(settings.SITE_URL.split('.'))):
-		return HttpResponse('User soup of {0}'.format(split_host[0]))
+		return user_soup(request, split_host[0])
 
 	# If the user's authenticated and this is not a user soup, redirect to /friends/.
 	if request.user.is_authenticated():
