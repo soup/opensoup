@@ -6,6 +6,12 @@ body {
 	padding: 0;
 }
 
+a {
+	color: #2B2926;
+	text-decoration: none !important;
+	border-bottom: 1px solid #6B6966;
+}
+
 header {
 	position: fixed;
 	z-index: 100;
@@ -54,7 +60,7 @@ header > nav li > a {
 
 header > nav a {
 	color: inherit !important;
-	text-decoration: none !important;
+	border-bottom: none;
 }
 
 #main-wrapper {
@@ -109,10 +115,14 @@ aside {
 	height: 100%;
 }
 
-.post > .left > .blog-avatar {
+.post .blog-avatar {
+	border: none;
+}
+
+.post .blog-avatar > img {
 	width: 48px;
 	height: 48px;
-	border: 1px solid #cecece;
+	border: 1px solid #cecece !important;
 }
 
 .post > .right {

@@ -75,7 +75,7 @@ STATICFILES_DIRS = (
 	os.path.join(SITE_ROOT, 'static'),
 )
 
-SITE_URL = 'soup.local'
+SITE_URL = 'soup.local:8000'
 AUTH_PROFILE_MODULE = 'tumblelog.UserProfile'
 
 # List of finder classes that know how to find static files in

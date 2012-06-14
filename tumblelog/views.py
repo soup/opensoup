@@ -14,6 +14,7 @@ def everyone(request):
 	context = {
 			'posts': posts,
 			'title': _('Everyone'),
+			'site_url': settings.SITE_URL,
 			'subtitle': _(u'See what everyone\'s posting – Go on, try scrolling all the way down :)')
 		}
 	return render_to_response('tumblelog/postlist.html', context_instance=RequestContext(request, context))
@@ -27,6 +28,7 @@ def friends(request):
 	context = {
 			'posts': posts,
 			'title': _('My friends'),
+			'site_url': settings.SITE_URL,
 			'subtitle': _(u'Stuff your friends posted')
 		}
 	return render_to_response('tumblelog/postlist.html', context_instance=RequestContext(request, context))

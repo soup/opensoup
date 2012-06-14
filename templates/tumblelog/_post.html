@@ -2,16 +2,16 @@
 
 <div class="post" id="post{{ post.id }}">
 	<div class="left">
-		<a href="/post/{% if post.url %}{{ post.url }}{% else %}id/{{ post.id }}{% endif %}/"><img class="blog-avatar" src="{{ MEDIA_URL }}{{ post.blog.avatar.url }}" alt="{{ post.blog.owner }}" /></a>
+		<a class="blog-avatar" href="//{{ post.blog.name }}.{{ site_url }}/post/{% if post.url %}{{ post.url }}{% else %}id/{{ post.id }}{% endif %}/"><img src="{{ MEDIA_URL }}{{ post.blog.avatar.url }}" alt="{{ post.blog.owner }}" /></a>
 	</div>
 	<div class="right">
 		<img class="post-image" src="{{ MEDIA_URL }}{{ post.asset.url }}" />
 
 		{% if post.origin %}
 			<span class="repost-list">
-				{% trans 'Reposted from' %} <img class="repost-from-avatar" src="{{ MEDIA_URL }}{{ post.origin.blog.avatar.url }}" />{{ post.origin.blog.name }}
+				{% trans 'Reposted from' %} <img class="repost-from-avatar" src="{{ MEDIA_URL }}{{ post.origin.blog.avatar.url }}" /><a href="//{{ post.origin.blog.name }}.{{ site_url }}">{{ post.origin.blog.name }}</a>
 				{% if post.reposted_via %}
-					{% trans 'via' %} <img class="repost-from-avatar" src="{{ MEDIA_URL }}{{ post.reposted_via.blog.avatar.url }}" />{{ post.reposted_via.blog.name }}
+					{% trans 'via' %} <img class="repost-from-avatar" src="{{ MEDIA_URL }}{{ post.reposted_via.blog.avatar.url }}" /><a href="//{{ post.reposted_via.blog.name }}.{{ site_url }}">{{ post.reposted_via.blog.name }}</a>
 				{% endif %}
 			</span>
 		{% endif %}
