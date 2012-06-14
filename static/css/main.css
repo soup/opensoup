@@ -90,8 +90,8 @@ aside {
 
 .page-title {
 	font-family: 'Open Sans Condensed';
+	font-size: 37px;
 	text-transform: uppercase;
-	font-weight: bold;
 	margin: 0;
 }
 
@@ -102,6 +102,7 @@ aside {
 	margin-bottom: 40px;
 	padding-bottom: 20px;
 	border-bottom: 1px solid #cecece;
+	font-style: italic;
 }
 
 .post {
