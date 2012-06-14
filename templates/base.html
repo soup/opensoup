@@ -24,10 +24,13 @@
 					{% if user.is_authenticated %}
 						<li><a href="/my/">{{ user.username }} <span class="collapse">▼</span></a></li>
 						<li><a href="/friends/">Friends</a></li>
+					{% else %}
+						<li><a href="/accounts/login/">Login</a></li>
+						<li><a href="/accounts/signup/">Sign up!</a></li>
+					{% endif %}
 						<li><a href="/everyone/">Everyone</a></li>
 
 						<li class="right"><a href="/settings/"><img src="{{ STATIC_URL }}img/favicon.png" alt="Settings" /> <span class="collapse">▼</span></a></li>
-					{% endif %}
 				</ul>
 			</nav>
 		</header>
