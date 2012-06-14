@@ -5,5 +5,6 @@ urlpatterns = patterns('',
 	url(r'^everyone/$', everyone),
 	url(r'^friends/$', friends),
 	url(r'^accounts/signup/$', signup),
+	url(r'^upload/$', upload),
 	url(r'^$', index),
 )

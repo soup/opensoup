@@ -22,6 +22,16 @@ input {
 	padding-bottom: 5px;
 }
 
+#add-content {
+	display: none;
+}
+
+.upload-iframe {
+	height: 50px;
+	width: 100px;
+	border: none;
+}
+
 header {
 	position: fixed;
 	z-index: 100;
@@ -92,6 +102,26 @@ aside {
 	border: 0;
 	margin-bottom: 30px;
 	clear: both;
+}
+
+aside nav ul {
+	padding: 0;
+	margin: 0;
+}
+
+aside nav li {
+	display: block;
+	list-style-type: none;
+	border-bottom: 1px solid #bebebe;
+	margin: 0;
+	padding: 0;
+	padding-bottom: 5px;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+aside nav li > a {
+	border: none;
 }
 
 #content {

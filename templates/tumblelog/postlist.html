@@ -1,6 +1,17 @@
 {% extends "base.html" %}
 
 {% block content %}
+	<div id="add-content">
+		<h2>Add ALL the content</h2>
+		<iframe name="upload-iframe" class="upload-iframe" href="#"></iframe>
+		<form enctype="multipart/form-data" method="post" action="/upload/" target="upload-iframe">
+			{% csrf_token %}
+			<table>
+				{{ uploadform }}
+				<tr><td><input type="submit" value="Save" /></td></tr>
+			</table>
+		</form>
+	</div>
 	{% for post in posts %}
 		{% include "tumblelog/_post.html" %}
 	{% empty %}
