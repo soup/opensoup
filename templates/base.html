@@ -22,9 +22,11 @@
 			<nav>
 				<ul>
 					{% if user.is_authenticated %}
-						<li><a href="/my/">{{ user.username }}</a></li>
+						<li><a href="/my/">{{ user.username }} <span class="collapse">▼</span></a></li>
 						<li><a href="/friends/">Friends</a></li>
 						<li><a href="/everyone/">Everyone</a></li>
+
+						<li class="right"><a href="/settings/"><img src="{{ STATIC_URL }}img/favicon.png" alt="Settings" /> <span class="collapse">▼</span></a></li>
 					{% endif %}
 				</ul>
 			</nav>
