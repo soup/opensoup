@@ -145,7 +145,7 @@ aside {
 }
 
 .post > .right > .post-image {
-	width: 100%;
+	max-width: 100%;
 }
 
 .post > .right > .repost-list {
