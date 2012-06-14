@@ -12,6 +12,16 @@ a {
 	border-bottom: 1px solid #6B6966;
 }
 
+input {
+	background-color: transparent;
+	color: inherit;
+	color: #000;
+	border: 0;
+	border-bottom: 1px solid #bebebe;
+	margin-bottom: 10px;
+	padding-bottom: 5px;
+}
+
 header {
 	position: fixed;
 	z-index: 100;
@@ -65,20 +75,23 @@ header > nav a {
 
 #main-wrapper {
 	display: block;
-	width: 888px;
+	width: 778px;
 	margin: 0 auto;
 }
 
 aside {
 	position: fixed;
-	width: 250px;
+	width: 150px;
 	float: left;
 	margin-top: 20px;
+	overflow: hidden;
 }
 
 #page-logo {
 	float: right;
 	border: 0;
+	margin-bottom: 30px;
+	clear: both;
 }
 
 #content {

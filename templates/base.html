@@ -22,12 +22,12 @@
 				<ul>
 					{% if user.is_authenticated %}
 						<li><a href="/my/">{{ user.username }} <span class="collapse">▼</span></a></li>
-						<li><a href="/friends/">Friends</a></li>
+						<li><a href="/friends/">{% trans 'Friends' %}</a></li>
 					{% else %}
-						<li><a href="/accounts/login/">Login</a></li>
-						<li><a href="/accounts/signup/">Sign up!</a></li>
+						<li><a href="/accounts/login/">{% trans 'Login' %}</a></li>
+						<li><a href="/accounts/signup/">{% trans 'Sign up!' %}</a></li>
 					{% endif %}
-						<li><a href="/everyone/">Everyone</a></li>
+						<li><a href="/everyone/">{% trans 'Everyone' %}</a></li>
 
 						<li class="right"><a href="/settings/"><img src="{{ STATIC_URL }}img/favicon.png" alt="Settings" /> <span class="collapse">▼</span></a></li>
 				</ul>
@@ -37,6 +37,18 @@
 		<div id="main-wrapper">
 			<aside>
 				<a href="/"><img id="page-logo" src="{{ STATIC_URL }}img/soup.png" alt="Soup logo" /></a>
+
+				{% if not user.is_authenticated %}
+					<h2>{% trans 'Login' %}</h2>
+					<form method="post" action="/accounts/login/">
+						{% csrf_token %}
+					    <td><input id="id_username" type="text" name="username" placeholder="{% trans 'username' %}" maxlength="30" /></td>
+					    <td><input type="password" name="password" id="id_password" placeholder="{% trans 'password' %}" /></td>
+
+						<input type="submit" value="{% trans 'Log in' %}" />
+						<input type="hidden" name="next" value="/friends/" />
+					</form>
+				{% endif %}
 			</aside>
 
 			<div id="content" role="main">
