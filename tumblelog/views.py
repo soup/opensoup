@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404, render_to_response
 from django.utils.translation import ugettext as _
 from django.contrib.auth.decorators import login_required
-from tumblelog.models import Post, ImagePost, Blog, Asset
+from tumblelog.models import Post, Blog, Asset
 from django.template.context import RequestContext
 from django.conf import settings
 from django import forms
@@ -18,7 +18,7 @@ class AssetForm(ModelForm):
 def everyone(request):
 	"Shows everyone's posts"
 
-	posts = ImagePost.objects.all().order_by('-id')[:20]
+	posts = Post.objects.all().order_by('-id')[:20]
 	context = {
 			'posts': posts,
 			'title': _('Everyone'),
@@ -33,7 +33,7 @@ def friends(request):
 	"Shows your friend's posts"
 
 	following = request.user.get_profile().following.values('id')
-	posts = ImagePost.objects.filter(blog__in = following).order_by('-id')[:20]
+	posts = Post.objects.filter(blog__in = following).order_by('-id')[:20]
 	context = {
 			'posts': posts,
 			'title': _('My friends'),
@@ -46,7 +46,7 @@ def friends(request):
 
 def user_soup(request, blogname):
 	blog = get_object_or_404(Blog, name = blogname)
-	posts = ImagePost.objects.filter(blog = blog).order_by('-id')[:20]
+	posts = Post.objects.filter(blog = blog).order_by('-id')[:20]
 
 	context = {
 			'posts': posts,
@@ -101,6 +101,6 @@ def upload(request):
 	asset = form.save()
 
 	# Le hack
-	ImagePost(blog = Blog.objects.filter(owner = request.user)[0], asset = asset).save()
+	Post(blog = Blog.objects.filter(owner = request.user)[0], asset = asset).save()
 	return HttpResponse('Success')
 

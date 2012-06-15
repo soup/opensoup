@@ -61,12 +61,12 @@ class Asset(models.Model):
 
 # Post types
 class Post(models.Model):
+	type = models.CharField(max_length = 2, choices = (('IM', 'Image'), ('VI', 'Video')))
 	blog = models.ForeignKey(Blog)
 	url = models.SlugField(blank = True)
 	reposted_via = models.ForeignKey('self', related_name = 'post_reposted_via', blank = True, null = True)
 	origin = models.ForeignKey('self', related_name = 'post_origin', blank = True, null = True)
-	
+	asset = models.ForeignKey(Asset)
+
 	__unicode__ = lambda self: 'Post {0} @ {1}'.format(self.url if self.url else self.id, self.blog.name)
 
-class ImagePost(Post):
-	asset = models.ForeignKey(Asset)
