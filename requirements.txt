@@ -6,3 +6,6 @@ docutils
 
 # For the Imagefields
 PIL
+
+# For the API
+django-piston

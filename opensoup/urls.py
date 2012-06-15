@@ -14,6 +14,8 @@ else:
 urlpatterns += patterns('',
 	url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 	url(r'^admin/', include(admin.site.urls)),
+
+	url(r'^api/v1/', include('api.urls')),
 	url(r'^i18n/', include('django.conf.urls.i18n')),
 
  	url(r'^accounts/login/$', 'django.contrib.auth.views.login', {'template_name': 'login.html'}),
