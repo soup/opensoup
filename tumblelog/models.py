@@ -66,7 +66,7 @@ class Post(models.Model):
 	url = models.SlugField(blank = True)
 	reposted_via = models.ForeignKey('self', related_name = 'post_reposted_via', blank = True, null = True)
 	origin = models.ForeignKey('self', related_name = 'post_origin', blank = True, null = True)
-	asset = models.ForeignKey(Asset, blank = True)
+	asset = models.ForeignKey(Asset, blank = True, null = True)
 
 	__unicode__ = lambda self: 'Post {0} @ {1}'.format(self.url if self.url else self.id, self.blog.name)
 
