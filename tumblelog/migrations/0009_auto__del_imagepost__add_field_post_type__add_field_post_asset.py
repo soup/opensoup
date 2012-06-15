@@ -18,7 +18,7 @@ class Migration(SchemaMigration):
 
         # Adding field 'Post.asset'
         db.add_column('tumblelog_post', 'asset',
-                      self.gf('django.db.models.fields.related.ForeignKey')(to=orm['tumblelog.Asset']),
+                      self.gf('django.db.models.fields.related.ForeignKey')(to=orm['tumblelog.Asset'], null=True, blank=True),
                       keep_default=False)
 
 
@@ -93,7 +93,7 @@ class Migration(SchemaMigration):
         },
         'tumblelog.post': {
             'Meta': {'object_name': 'Post'},
-            'asset': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['tumblelog.Asset']"}),
+            'asset': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['tumblelog.Asset']", 'null': 'True', 'blank': 'True'}),
             'blog': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['tumblelog.Blog']"}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'origin': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'post_origin'", 'null': 'True', 'to': "orm['tumblelog.Post']"}),
