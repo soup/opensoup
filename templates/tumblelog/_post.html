@@ -1,6 +1,6 @@
 {% load i18n %}
 
-<div class="post" id="post{{ post.id }}">
+<div class="post" id="post{{ post.id }}" data-post-id="{{ post.id }}">
 	<div class="left">
 		<a class="blog-avatar" href="//{{ post.blog.name }}.{{ site_url }}/post/{% if post.url %}{{ post.url }}{% else %}id/{{ post.id }}{% endif %}/"><img src="{{ MEDIA_URL }}{{ post.blog.avatar.url }}" alt="{{ post.blog.owner }}" /></a>
 	</div>
