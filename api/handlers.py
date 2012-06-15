@@ -7,7 +7,7 @@ class PostHandler(BaseHandler):
 	model = Post
 
 	def read(self, request, post_id, count = 1):
-		return Post.objects.filter(id__gt = post_id)[:count]
+		return Post.objects.filter(id__lt = post_id).order_by('-id')[:count]
 
 class AssetHandler(BaseHandler):
 	allowed_methods = ('GET',)
