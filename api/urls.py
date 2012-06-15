@@ -6,9 +6,9 @@ post_handler = Resource(PostHandler)
 asset_handler = Resource(AssetHandler)
 
 urlpatterns = patterns('',
-	url(r'^posts/(?P<post_id>[^/]+)/', post_handler),
-	url(r'^posts/$', post_handler),
+	url(r'^posts/(?P<post_id>[^/]+)/$', post_handler),
+	url(r'^posts/(?P<post_id>[0-9]+)/(?P<count>[0-9]+)/$', post_handler),
 
-	url(r'^assets/(?P<asset_id>[^/]+)/', asset_handler),
+	url(r'^assets/(?P<asset_id>[^/]+)/$', asset_handler),
 	url(r'^assets/$', asset_handler),
 )

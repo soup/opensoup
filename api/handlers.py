@@ -6,11 +6,8 @@ class PostHandler(BaseHandler):
 	exclude = ('_state')
 	model = Post
 
-	def read(self, request, post_id = None):
-		if post_id:
-			return Post.objects.filter(id = post_id)
-
-		return Post.objects.all()
+	def read(self, request, post_id, count = 1):
+		return Post.objects.filter(id__gt = post_id)[:count]
 
 class AssetHandler(BaseHandler):
 	allowed_methods = ('GET',)
