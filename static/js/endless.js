@@ -31,10 +31,10 @@ function check_scrollposition()
 					.data('post-id', data[i].id)
 					.html('\
 							<div class="left">\
-								<a class="blog-avatar" href="//derp/"><img src="/asset/' + post.blog.avatar.diskfile + '" alt="' + post.blog.name + '" /></a>\
+								<a class="blog-avatar" href="//derp/"><img src="' + media_url + post.blog.avatar.diskfile + '" alt="' + post.blog.name + '" /></a>\
 							</div>\
 							<div class="right">\
-								<img class="post-image" src="/asset/' + post.asset.diskfile + '" />\
+								<img class="post-image" src="' + media_url + post.asset.diskfile + '" />\
 							</div>\
 						')
 					.appendTo('#content')
