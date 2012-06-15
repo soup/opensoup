@@ -90,6 +90,7 @@ def signup(request):
 			'subtitle': 'Hooray! A new user!'
 		}))
 
+@login_required
 def upload(request):
 	if not request.method == 'POST':
 		return HttpResponse('Nothing posted.')
