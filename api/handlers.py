@@ -4,6 +4,7 @@ from tumblelog.models import Post, Asset
 class PostHandler(BaseHandler):
 	allowed_methods = ('GET',)
 	exclude = ('_state')
+	fields = ('id', 'origin', 'url', ('blog', ('name','title','avatar','id', 'owner_id')), 'asset', 'reposted_via', 'type')
 	model = Post
 
 	def read(self, request, post_id, count = 1):
