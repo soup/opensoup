@@ -18,7 +18,7 @@ class Migration(SchemaMigration):
 
         # Adding field 'Post.asset'
         db.add_column('tumblelog_post', 'asset',
-                      self.gf('django.db.models.fields.related.ForeignKey')(default=0, to=orm['tumblelog.Asset']),
+                      self.gf('django.db.models.fields.related.ForeignKey')(to=orm['tumblelog.Asset']),
                       keep_default=False)
 
 
