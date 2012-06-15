@@ -21,7 +21,7 @@ function check_scrollposition()
 		// Get ID of last post
 		var last_post = $('div.post:last').data('post-id');
 
-		$.get('/api/v1/posts/50/20/', function(data)
+		$.get('/api/v1/posts/' + last_post + '/20/', function(data)
 		{
 			$(data).each(function(i)
 			{
