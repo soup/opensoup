@@ -22,6 +22,22 @@ input {
 	padding-bottom: 5px;
 }
 
+#lightbox {
+	display: none;
+	position: fixed;
+
+	z-index: 1000;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+
+	background: rgba(0, 0, 0, 0.85);
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: contain;
+}
+
 #add-content {
 	display: none;
 }
@@ -174,7 +190,11 @@ aside nav li > a {
 	padding-left: 60px;
 }
 
-.post > .right > .post-image {
+.post > .right .post-image-link {
+	border: none;
+}
+
+.post > .right .post-image {
 	max-width: 100%;
 }
 

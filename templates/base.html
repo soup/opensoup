@@ -13,15 +13,15 @@
 
 		<script type="text/javascript">
 			var static_url = '{{ STATIC_URL }}';
-		</script>
-		<script type="text/javascript">
 			var media_url = '{{ MEDIA_URL }}';
 		</script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
 		<script src="{{ STATIC_URL }}js/endless.js" type="text/javascript"></script>
+		<script src="{{ STATIC_URL }}js/lightbox.js" type="text/javascript"></script>
 	</head>
 
 	<body>
+		<div id="lightbox" style="display: none" onclick="$(this).fadeOut(120);"></div>
 		<header>
 			<nav>
 				<ul>

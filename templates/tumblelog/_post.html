@@ -5,7 +5,7 @@
 		<a class="blog-avatar" href="//{{ post.blog.name }}.{{ site_url }}/post/{% if post.url %}{{ post.url }}{% else %}id/{{ post.id }}{% endif %}/"><img src="{{ MEDIA_URL }}{{ post.blog.avatar.url }}" alt="{{ post.blog.owner }}" /></a>
 	</div>
 	<div class="right">
-		<img class="post-image" src="{{ MEDIA_URL }}{{ post.asset.url }}" />
+		<a href="{{ MEDIA_URL }}{{ post.asset.url }}" onclick="lightbox('{{ MEDIA_URL }}{{ post.asset.url }}'); return false;" class="post-image-link"><img class="post-image" src="{{ MEDIA_URL }}{{ post.asset.url }}" /></a>
 
 		{% if post.origin %}
 			<span class="repost-list">
